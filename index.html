@@ -339,6 +339,10 @@
                   class="gallery-right__image gallery-right__image-first"
                 >
                   <source
+                    srcset="img/gallery/gallery1-sm.jpg"
+                    media="(min-width: 320px)"
+                  />
+                  <source
                     srcset="img/gallery/gallery1-md.jpg"
                     media="(max-width: 768px)"
                   />
@@ -1029,7 +1033,9 @@
                   class="contacts__input contacts__input-phone"
                   placeholder="Телефон*"
                 />
-                <button class="contacts__btn">Заказать обратный звонок</button>
+                <button class="contacts__btn">
+                  Заказать<span class="contacts__call"> обратный звонок</span>
+                </button>
               </form>
               <div class="contacts__links">
                 <h3 class="contacts__heading contacts__heading-call">
@@ -1038,6 +1044,7 @@
                 <div class="contacts__social">
                   <a href="#" class="contacts__link">
                     <svg
+                      class="contacts__pic"
                       width="40"
                       height="40"
                       viewbox="0 0 40 40"
@@ -1057,6 +1064,7 @@
                   </a>
                   <a href="#" class="contacts__link">
                     <svg
+                      class="contacts__pic"
                       width="40"
                       height="40"
                       viewbox="0 0 40 40"
@@ -1088,6 +1096,7 @@
       <div class="container">
         <div class="socials__content">
           <svg
+            class="socials__logo"
             width="173"
             height="40"
             viewbox="0 0 173 40"

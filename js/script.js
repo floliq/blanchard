@@ -54,6 +54,24 @@ function init() {
 
 document.addEventListener("DOMContentLoaded", () => {
   event.preventDefault();
+
+  let menu = document.querySelector(".menu-top__bar");
+  let burger = document.querySelector(".menu__btn");
+  let menuLinks = document.querySelectorAll(".menu-top__link");
+  burger.onclick = function () {
+    menu.classList.toggle("menu-top__bar-active");
+    burger.classList.toggle("menu__btn-open");
+    document.body.classList.toggle("stop");
+  }
+
+  menuLinks.forEach(function (menuLink) {
+    menuLink.addEventListener("click", () => {
+      document.body.classList.remove("stop");
+      menu.classList.remove("menu-top__bar-active");
+    })
+
+  })
+
   document.querySelectorAll(".catalog__era").forEach(function (catalogBtn){
     catalogBtn.addEventListener("click", () => {
       let element = catalogBtn.children[0];
