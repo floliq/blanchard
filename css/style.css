@@ -1914,10 +1914,7 @@ button {
     height: 18px;
   }
 
-  .menu__btn-open {
-    width: 15px;
-    height: 15px;
-  }
+
 
   .menu__btn > span,
   .menu__btn > span::before,

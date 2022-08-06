@@ -68,6 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     menuLink.addEventListener("click", () => {
       document.body.classList.remove("stop");
       menu.classList.remove("menu-top__bar-active");
+      burger.classList.remove("menu__btn-open");
     });
   });
 
