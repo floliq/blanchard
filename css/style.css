@@ -571,22 +571,25 @@ button {
   flex-direction: column;
 }
 
-.swiper-button-next, .swiper-button-prev{
+.gallery-right__button
+{
   position: static;
   margin: 0;
   height: 100%;
 }
 
-.swiper-pagination{
+.gallery-right__page {
   position: static;
   width: fit-content;
 }
 
-.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after{
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
   content: "";
 }
 
-.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after{
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
   content: "";
 }
 
@@ -645,8 +648,6 @@ button {
   color: #ffffff;
 }
 
-
-
 .gallery-right__images {
   max-width: 1150px;
   display: flex;
@@ -657,8 +658,6 @@ button {
 .gallery-right__image {
   max-width: 450px;
 }
-
-
 
 .catalog {
   padding: 80px 0;
@@ -888,21 +887,43 @@ button {
   color: #9d5cd0;
 }
 
-.events__content {
+.events__container{
   position: relative;
+}
+
+.events__content {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  max-width: 1600px;
+  overflow: hidden;
 }
 
 .events__button {
   position: absolute;
-  right: 0;
   top: 50%;
-  transform: translate(50%, -50%);
+  width: 50px;
+  height: 50px;
+ 
   background-color: transparent;
   border: none;
   outline: none;
 }
+
+.events__button-next{
+  right: 50px;
+  transform: translate(50%, 50%);
+}
+
+.events__button-prev{
+  left: 50px;
+  transform: translate(-50%, 50%) rotate(180deg);
+}
+
+.events__button-next.swiper-button-disabled, .events__button-prev.swiper-button-disabled{
+  opacity: 0;
+}
+
 
 .events__border,
 .events__fill {
@@ -932,36 +953,43 @@ button {
   fill: #d1a9f0;
 }
 
-.events__info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-grow: 1;
+.events__card {
   max-width: 500px;
   min-height: 700px;
-  width: 33%;
-  padding: 313px 50px 42px;
+  padding-top: 300px;
   background: transparent;
-  border: 1px solid #cacaca;
   background-repeat: no-repeat;
   background-position: top center;
 }
 
-.events__info-first,
-.events__info-second {
-  margin-right: 50px;
-}
-
-.events__info-first {
+.events__card-first {
   background-image: url("../img/events/events_first.jpg");
 }
 
-.events__info-second {
+.events__card-second {
   background-image: url("../img/events/events_second.jpg");
 }
 
-.events__info-third {
+.events__card-third {
   background-image: url("../img/events/events_third.jpg");
+}
+
+.events__card-fourth {
+  background-image: url("../img/events/events_fourth.jpg");
+}
+
+.events__card-fiveth {
+  background-image: url("../img/events/events_fiveth.jpg");
+}
+
+.events__info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding: 13px 50px 42px;
+  min-height: 400px;
+  border: 1px solid #cacaca;
 }
 
 .events__place {
@@ -1026,6 +1054,10 @@ button {
   box-shadow: none;
 }
 
+.events__pagination{
+  display: none;
+}
+
 .events__btns {
   display: none;
 }
@@ -1076,9 +1108,16 @@ button {
   color: #333333;
 }
 
-.projects__content {
+.projects__content{
+  position: relative;
+}
+
+.projects__container {
   display: flex;
   align-items: center;
+  margin: 0 75px;
+  max-width: 1450px;
+  overflow: hidden;
 }
 
 .projects__btn {
@@ -1124,24 +1163,19 @@ button {
   display: flex;
   justify-content: space-between;
   flex-grow: 1;
-  margin-right: 45px;
 }
 
 .projects__company {
-  flex-grow: 1;
-  max-width: 450px;
-  min-height: 150px;
-  width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
   border: none;
   background-color: transparent;
   border: 1px solid #cacaca;
   outline: none;
   transition-duration: 0.3s;
   transition-timing-function: ease;
-}
-
-.projects__company:not(:last-child) {
-  margin-right: 50px;
 }
 
 .projects__company:focus {
@@ -1165,7 +1199,6 @@ button {
 }
 
 .projects__logo {
-  max-width: 100%;
   filter: grayscale(1) opacity(0.5);
   transition-duration: 0.3s;
   transition-timing-function: ease;
@@ -1383,8 +1416,6 @@ button {
 }
 
 @media (max-width: 1600px) {
-
-
   .gallery-right__image:not(:last-child) {
     margin-right: 0;
   }
@@ -1556,7 +1587,7 @@ button {
     margin-bottom: 106px;
   }
 
-  .gallery-right__images{
+  .gallery-right__images {
     max-width: 594px;
   }
 
@@ -1590,26 +1621,28 @@ button {
     margin-bottom: 17px;
   }
 
-  .events__content {
+  .events__card {
     margin-bottom: 30px;
-  }
-
-  .events__info {
-    padding: 216px 33px 53px 34px;
+    padding-top: 200px;
     min-height: 683px;
     background-size: 100% 200px;
   }
 
-  .events__info-first {
+  .events__card-first {
     background-image: url("../img/events/events_lg_1.jpg");
   }
 
-  .events__info-second {
+  .events__card-second {
     background-image: url("../img/events/events_lg_2.jpg");
   }
 
-  .events__info-third {
+  .events__card-third {
     background-image: url("../img/events/events_lg_3.jpg");
+  }
+
+  .events__info{
+    padding: 13px 33px 53px 34px;
+    min-height: 483px;
   }
 
   .events__place,
@@ -1619,16 +1652,34 @@ button {
   }
 
   .events__date {
-    margin-bottom: 0;
+    margin-bottom: 5px;
   }
 
   .events__subtitle {
-    margin-bottom: 4px;
+    margin-bottom: 5px;
   }
 
-  .events__info-first,
-  .events__info-second {
-    margin-right: 27px;
+  .events__pagination{
+    position: static;
+    display: flex;
+    justify-content: center;
+  }
+
+  .swiper-pagination-bullet{
+    width: 10px;
+    height: 10px;
+  }
+
+  .swiper-pagination-bullet{
+    margin: 0;
+  }
+
+  .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
+    margin: 0 var(--swiper-pagination-bullet-horizontal-gap,7px);
+  }
+
+  .swiper-pagination-bullet-active{
+    background: #666666;
   }
 
   .events__button {
@@ -1665,19 +1716,6 @@ button {
     margin-right: 23px;
   }
 
-  .projects__company {
-    width: 50%;
-    min-height: 128px;
-  }
-
-  .projects__company-third {
-    display: none;
-  }
-
-  .projects__company:nth-child(2) {
-    margin-right: 0;
-  }
-
   .projects__btn-prev {
     margin-right: 23px;
   }
@@ -1708,16 +1746,29 @@ button {
 }
 
 @media (max-width: 1024px) {
-  .events__info {
-    max-width: 290px;
-  }
 
-  .choices{
+  .choices {
     max-width: 280px;
   }
 
-  .gallery-left{
+  .gallery-left {
     max-width: 280px;
+  }
+
+  .projects__container{
+    margin: 0 53px;
+  }
+
+  .projects__company{
+    height: 128px;
+  }
+
+  .projects__logo{
+    width: 55%;
+  }
+
+  .projects__logo-fourth{
+    height: 80%;
   }
 }
 
@@ -1739,11 +1790,11 @@ button {
     margin-bottom: 40px;
   }
 
-  .swiper{
+  .gallery-right__images {
     margin: 0;
   }
 
-  .gallery-right__images{
+  .gallery-right__images {
     max-width: 100%;
   }
 
@@ -1751,7 +1802,7 @@ button {
     padding: 0;
   }
 
-  .swiper-button-next, .swiper-button-prev{
+  .gallery-right__button {
     width: 30px;
   }
   .contacts__form {
@@ -1770,19 +1821,6 @@ button {
   .contacts__btn {
     max-width: 50%;
     width: 50%;
-  }
-
-  .projects__company {
-    min-height: 106px;
-  }
-
-  .events__info-third {
-    display: none;
-  }
-
-  .events__info {
-    width: 50%;
-    max-width: 50%;
   }
 
   .gallery-right__image:first-child {
@@ -1810,9 +1848,6 @@ button {
     columns: 3 auto;
   }
 
-  .events__info-second {
-    margin-right: 0;
-  }
 
   .catalog-desc__author-break {
     break-before: column;
@@ -1846,13 +1881,6 @@ button {
     margin-bottom: 27px;
   }
 
-  .projects__company:not(:last-child) {
-    margin-right: 34px;
-  }
-  .projects__company:nth-child(2) {
-    margin-right: 0;
-  }
-
   .projects__subtitle {
     margin-bottom: 28px;
   }
@@ -1875,16 +1903,8 @@ button {
     max-width: 315px;
   }
 
-  .events__info {
+  .events__card {
     max-width: 317px;
-  }
-
-  .events__info:first-child {
-    margin-right: 34px;
-  }
-
-  .projects__company {
-    max-width: 264px;
   }
 
   .contacts__input {
@@ -1898,9 +1918,29 @@ button {
   .gallery-right__picture {
     width: 100%;
   }
+
+  .events__info{
+    padding:13px 18px 53px 34px;
+  }
+
+  .events__subtitle{
+    max-width: 222px;
+  }
+
+  .events__text{
+    max-width: 228px;
+  }
+
+  .projects__company{
+    height: 106px;
+  }
+
+  .projects__logo {
+    width: 80%;
+  }
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .container {
     padding: 0 15px;
   }
@@ -1913,8 +1953,6 @@ button {
     width: 25px;
     height: 18px;
   }
-
-
 
   .menu__btn > span,
   .menu__btn > span::before,
@@ -1960,14 +1998,14 @@ button {
     height: 18px;
   }
 
-  .menu-top__auth{
+  .menu-top__auth {
     font-weight: 600;
     font-size: 12px;
     line-height: 16px;
     padding: 11px 31px;
   }
 
-  .menu-top__authpic{
+  .menu-top__authpic {
     margin-right: 4px;
     width: 9px;
     height: 9px;
@@ -2025,9 +2063,6 @@ button {
     line-height: 28px;
   }
 
-  .events__info-second {
-    display: none;
-  }
 
   .gallery {
     padding: 50px 0;
@@ -2041,7 +2076,7 @@ button {
     margin-bottom: 5px;
   }
 
-  .gallery-left{
+  .gallery-left {
     max-width: 100%;
   }
 
@@ -2068,12 +2103,12 @@ button {
     margin-right: 0;
   }
 
-  .gallery-right__picture-six{
+  .gallery-right__picture-six {
     height: 367px;
   }
 
-  .gallery-right__picture{
-    margin-bottom: 5px;
+  .gallery-right__picture {
+    margin-bottom: 15px;
   }
 
   .gallery-right__buttons {
@@ -2128,33 +2163,40 @@ button {
     margin-bottom: 12px;
   }
 
-  .events__info:first-child {
-    margin-right: 0;
+  .events__content {
+    margin-bottom: 20px;
   }
 
-  .events__info {
-    padding: 216px 17px 53px 22px;
+  .events__card {
+    margin-bottom: 20px;
+    padding-top: 200px;
+    max-width: 100%;
+  }
+
+  .events__info{
+    padding: 16px 17px 53px 22px;
   }
 
   .events__date {
     margin-bottom: 10px;
   }
 
+  .events__subtitle{
+    max-width: 100%;
+  }
+
   .events__text {
-    max-width: 220px;
+    max-width: 100%;
   }
 
   .events__link {
     margin-left: 6px;
   }
 
-  .events__content {
-    margin-bottom: 20px;
-    justify-content: center;
-  }
+  
 
   .projects {
-    padding: 50px 0;
+    padding: 33px 0 50px;
   }
 
   .projects__text {
@@ -2168,24 +2210,21 @@ button {
     line-height: 32px;
   }
 
-  .projects__btn-prev {
-    margin-right: 18px;
+  .projects__container{
+    margin: 0 47px;
   }
 
-  .projects__companies {
-    margin-right: 17px;
-  }
-
-  .projects__company-second {
-    display: none;
-  }
-
-  .projects__company:not(:last-child) {
-    margin-right: 0;
-  }
 
   .projects__company {
-    min-height: 65px;
+    height: 65px;
+  }
+
+  .projects__logo{
+    width: 55%;
+  }
+
+  .projects__logo-fiveth{
+    height: 80%;
   }
 
   .projects__subtitle {

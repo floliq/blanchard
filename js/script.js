@@ -108,7 +108,71 @@ const swiper = new Swiper(".swiper", {
     prevEl: ".swiper-button-prev",
   },
   pagination: {
-    el: ".swiper-pagination",
+    el: ".gallery-right__page",
     type: "fraction",
+  },
+});
+
+const projectsSwiper = new Swiper(".projects__container-swiper", {
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+      spaceBetween: 0,
+    },
+    576: {
+      slidesPerView: 2,
+      slidesPerGroup: 2,
+      spaceBetween: 34,
+    },
+    1024: {
+      slidesPerView: 2,
+      slidesPerGroup: 2,
+      spaceBetween: 50,
+    },
+    1920: {
+      slidesPerView: 3,
+      slidesPerGroup: 3,
+      spaceBetween: 50,
+    }
+  },
+  loop: false,
+  navigation: {
+    nextEl: ".projects__btn-next",
+    prevEl: ".projects__btn-prev",
+  },
+});
+
+const eventsSwiper = new Swiper(".events__content", {
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+      spaceBetween: 0,
+    },
+    576: {
+      slidesPerView: 2,
+      slidesPerGroup: 2,
+      spaceBetween: 34,
+    },
+    1024: {
+      slidesPerView: 3,
+      slidesPerGroup: 3,
+      spaceBetween: 27,
+    },
+    1920: {
+      slidesPerView: 3,
+      slidesPerGroup: 3,
+      spaceBetween: 50,
+    }
+  },
+  loop: false,
+  navigation: {
+    nextEl: ".events__button-next",
+    prevEl: ".events__button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
   },
 });
