@@ -72,6 +72,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  let menuBottomBtns = document.querySelectorAll(".menu-bottom__btn");
+  let dropdowns = document.querySelectorAll(".menu-bottom__dropdown");
+  menuBottomBtns.forEach((btn) => {
+    let dropdown = btn.parentElement.querySelector(".menu-bottom__dropdown");
+    btn.addEventListener("click", () => {
+      btn.classList.toggle("menu-bottom__btn-active");
+      dropdown.classList.toggle("menu-bottom__dropdown-active");
+
+      menuBottomBtns.forEach((item) => {
+        if (btn != item) {
+          item.classList.remove("menu-bottom__btn-active");
+        }
+      });
+
+      dropdowns.forEach((drop) => {
+        if (dropdown != drop) {
+          drop.classList.remove("menu-bottom__dropdown-active");
+        }
+      });
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    let target = e.target;
+    if (!target.closest(".menu-bottom__list")) {
+      document.querySelectorAll(".menu-bottom__dropdown").forEach((el) => {
+        el.classList.remove("menu-bottom__dropdown-active");
+      });
+      document.querySelectorAll(".menu-bottom__btn").forEach((el) => {
+        el.classList.remove("menu-bottom__btn-active");
+      });
+    }
+  });
+
   document.querySelectorAll(".catalog__era").forEach(function (catalogBtn) {
     catalogBtn.addEventListener("click", () => {
       let element = catalogBtn.children[0];
@@ -82,16 +116,32 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  document.querySelectorAll('.catalog-desc__author').forEach(function (tabsBtn) {
+    tabsBtn.addEventListener('click', function (e) {
+        const path = e.currentTarget.dataset.path;
+        document.querySelectorAll('.catalog-desc__author').forEach(function (btn) {
+            btn.classList.remove('catalog-desc__author-active')
+        });
+        e.currentTarget.classList.add('catalog-desc__author-active');
+        document.querySelectorAll('.catalog__left').forEach(function (tabsBtn) {
+            tabsBtn.classList.remove('catalog__left-active')
+        });
+        document.querySelector(`[data-target="${path}"]`).classList.add('catalog__left-active');
+    });
 });
 
-const swiper = new Swiper(".swiper", {
+
+});
+
+const swiper = new Swiper(".gallery-right__swiper", {
   breakpoints: {
     320: {
       slidesPerView: 1,
       slidesPerGroup: 1,
       spaceBetween: 0,
     },
-    768: {
+    576: {
       slidesPerView: 2,
       slidesPerGroup: 2,
       spaceBetween: 38,
@@ -102,7 +152,7 @@ const swiper = new Swiper(".swiper", {
       spaceBetween: 50,
     },
   },
-  loop: true,
+  loop: false,
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
@@ -134,7 +184,7 @@ const projectsSwiper = new Swiper(".projects__container-swiper", {
       slidesPerView: 3,
       slidesPerGroup: 3,
       spaceBetween: 50,
-    }
+    },
   },
   loop: false,
   navigation: {
@@ -164,7 +214,7 @@ const eventsSwiper = new Swiper(".events__content", {
       slidesPerView: 3,
       slidesPerGroup: 3,
       spaceBetween: 50,
-    }
+    },
   },
   loop: false,
   navigation: {
