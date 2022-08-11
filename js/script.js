@@ -6,7 +6,7 @@ const choices = new Choices(element, {
 
 $(".accordion").accordion({
   heightStyle: "content",
-  active: true,
+  active: false,
   collapsible: true,
 });
 
@@ -31,7 +31,7 @@ function init() {
       iconLayout: "default#image",
       iconImageHref: "img/map-point.svg",
       iconImageSize: [20, 20],
-      iconImageOffset: [0, 0],
+      iconImageOffset: [-10, -10],
     }
   );
   myMap.geoObjects.add(myPlacemark);
@@ -39,15 +39,15 @@ function init() {
     float: "none",
     size: "small",
     position: {
-      top: "200px",
-      right: "20px",
+      top: "300px",
+      right: "11px",
     },
   });
   myMap.controls.add("geolocationControl", {
     float: "none",
     position: {
-      top: "268px",
-      right: "20px",
+      top: "380px",
+      right: "11px",
     },
   });
 }
@@ -58,9 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let menu = document.querySelector(".menu-top__bar");
   let burger = document.querySelector(".menu__btn");
   let menuLinks = document.querySelectorAll(".menu-top__link");
+  let menuForm = document.querySelector(".menu-top__form");
   burger.onclick = function () {
     menu.classList.toggle("menu-top__bar-active");
     burger.classList.toggle("menu__btn-open");
+    menuForm.classList.remove("menu-top__form-active");
     document.body.classList.toggle("stop");
   };
 
@@ -71,6 +73,17 @@ document.addEventListener("DOMContentLoaded", () => {
       burger.classList.remove("menu__btn-open");
     });
   });
+
+  let menuSearch = document.querySelector(".menu-top__search");
+
+  menuSearch.addEventListener("click", () => {
+    menuForm.classList.add("menu-top__form-active");
+  })
+
+  let formClose = document.querySelector(".menu-top__close");
+  formClose.addEventListener("click", () => {
+    menuForm.classList.remove("menu-top__form-active");
+  })
 
   let menuBottomBtns = document.querySelectorAll(".menu-bottom__btn");
   let dropdowns = document.querySelectorAll(".menu-bottom__dropdown");
@@ -106,7 +119,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+
   document.querySelectorAll(".catalog__era").forEach(function (catalogBtn) {
+
     catalogBtn.addEventListener("click", () => {
       let element = catalogBtn.children[0];
       if (element.classList.contains("ui-state-active")) {
@@ -114,6 +129,11 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         catalogBtn.classList.remove("catalog__era-active");
       }
+      document.querySelectorAll(".catalog__era").forEach(function (btn) {
+        if (catalogBtn != btn){
+          btn.classList.remove("catalog__era-active");
+        }
+      })
     });
   });
 
@@ -154,8 +174,8 @@ const swiper = new Swiper(".gallery-right__swiper", {
   },
   loop: false,
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: ".gallery-right__button-next",
+    prevEl: ".gallery-right__button-prev",
   },
   pagination: {
     el: ".gallery-right__page",
