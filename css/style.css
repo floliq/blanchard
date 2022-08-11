@@ -956,10 +956,6 @@ button {
   transition-timing-function: ease;
 }
 
-.gallery__wrap:focus .gallery-right__picture {
-  border: 3px solid #7943a4;
-}
-
 .gallery__wrap:hover::before {
   opacity: 1;
 }
