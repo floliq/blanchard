@@ -161,7 +161,7 @@ const swiper = new Swiper(".gallery-right__swiper", {
       slidesPerGroup: 1,
       spaceBetween: 0,
     },
-    576: {
+    768: {
       slidesPerView: 2,
       slidesPerGroup: 2,
       spaceBetween: 38,

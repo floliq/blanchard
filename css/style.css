@@ -896,14 +896,23 @@ button {
   color: #ffffff;
 }
 
+.gallery__wrapper{
+  height: 350px;
+}
+
 .gallery__slide {
   position: relative;
+  height: fit-content;
   transition-duration: 0.3s;
   transition-timing-function: ease;
   outline: none;
 }
 
-.gallery__slide::before {
+.gallery__wrap{
+  max-width: 350px;
+}
+
+.gallery__wrap::before {
   content: "";
   position: absolute;
   top: 25px;
@@ -913,17 +922,19 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 300px;
+  max-width: 300px;
+  max-height: 300px;
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
   transition-duration: 0.3s;
   transition-timing-function: ease;
 }
 
-.gallery__slide::after {
+.gallery__wrap::after {
   content: url("../img/fullphoto.svg");
   position: absolute;
+  max-width: 350px;
+  max-height: 350px;
   width: 100%;
   height: 100%;
   top: 0;
@@ -938,34 +949,33 @@ button {
 }
 
 .gallery-right__picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition-duration: 0.3s;
   transition-timing-function: ease;
 }
 
-.gallery__slide:focus .gallery-right__picture {
+.gallery__wrap:focus .gallery-right__picture {
   border: 3px solid #7943a4;
 }
 
-.gallery__slide:hover::before {
+.gallery__wrap:hover::before {
   opacity: 1;
 }
 
-.gallery__slide:hover::after {
+.gallery__wrap:hover::after {
   opacity: 1;
   background-color: transparent;
 }
 
-.gallery__slide:active::before {
+.gallery__wrap:active::before {
   opacity: 1;
 }
 
-.gallery__slide:active::after {
+.gallery__wrap:active::after {
   opacity: 1;
   background-color: rgba(194, 131, 243, 0.4);
-}
-
-.gallery-right__image {
-  max-width: 450px;
 }
 
 .catalog {
@@ -2574,12 +2584,33 @@ button {
     width: fit-content;
   }
 
-  .gallery-right__picture-six {
+  .gallery__wrapper{
+    margin-bottom: 20px;
     height: 367px;
   }
 
-  .gallery-right__picture {
-    margin-bottom: 15px;
+  .gallery__wrap{
+    max-width: 290px;
+    margin: 0 auto;
+  }
+
+  .gallery__wrap::after{
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 290px;
+    max-height: 367px;
+  }
+
+  .gallery__wrap::before{
+    inset: 7%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 210px;
+    height: 310px;
+  }
+
+  .gallery-right__picture-six {
+    height: 367px;
   }
 
   .gallery-right__buttons {
