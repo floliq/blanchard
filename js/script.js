@@ -6,7 +6,7 @@ const choices = new Choices(element, {
 
 $(".accordion").accordion({
   heightStyle: "content",
-  active: false,
+  active: 0,
   collapsible: true,
 });
 
@@ -52,6 +52,9 @@ function init() {
   });
 }
 
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   event.preventDefault();
 
@@ -78,12 +81,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   menuSearch.addEventListener("click", () => {
     menuForm.classList.add("menu-top__form-active");
-  })
+  });
 
   let formClose = document.querySelector(".menu-top__close");
   formClose.addEventListener("click", () => {
     menuForm.classList.remove("menu-top__form-active");
-  })
+  });
 
   let menuBottomBtns = document.querySelectorAll(".menu-bottom__btn");
   let dropdowns = document.querySelectorAll(".menu-bottom__dropdown");
@@ -119,9 +122,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  document.querySelectorAll(".simplebar-content-wrapper").forEach((el) => {
+    el.removeAttribute("tabindex");
+    el.removeAttribute("aria-label")
+  })
+
+  document.querySelectorAll(".gallery__wrap").forEach(function (wrap) {
+    wrap.addEventListener("click", () => {
+      document.querySelector(".gallery-modal").classList.add("opened");
+      document.body.classList.toggle("stop");
+    });
+  });
+
+  document
+    .querySelector(".gallery-modal")
+    .addEventListener("click", (event) => {
+      let element = event.target;
+      if (
+        element.closest(".gallery-modal__btn") ||
+        element.classList.contains("gallery-modal")
+      ) {
+        document.querySelector(".gallery-modal").classList.remove("opened");
+        document.body.classList.remove("remove");
+      }
+    });
 
   document.querySelectorAll(".catalog__era").forEach(function (catalogBtn) {
-
     catalogBtn.addEventListener("click", () => {
       let element = catalogBtn.children[0];
       if (element.classList.contains("ui-state-active")) {
@@ -130,28 +156,36 @@ document.addEventListener("DOMContentLoaded", () => {
         catalogBtn.classList.remove("catalog__era-active");
       }
       document.querySelectorAll(".catalog__era").forEach(function (btn) {
-        if (catalogBtn != btn){
+        if (catalogBtn != btn) {
           btn.classList.remove("catalog__era-active");
         }
-      })
+      });
     });
   });
 
-  document.querySelectorAll('.catalog-desc__author').forEach(function (tabsBtn) {
-    tabsBtn.addEventListener('click', function (e) {
+  document
+    .querySelectorAll(".catalog-desc__author")
+    .forEach(function (tabsBtn) {
+      tabsBtn.addEventListener("click", function (e) {
         const path = e.currentTarget.dataset.path;
-        document.querySelectorAll('.catalog-desc__author').forEach(function (btn) {
-            btn.classList.remove('catalog-desc__author-active')
+        document
+          .querySelectorAll(".catalog-desc__author")
+          .forEach(function (btn) {
+            btn.classList.remove("catalog-desc__author-active");
+          });
+        e.currentTarget.classList.add("catalog-desc__author-active");
+        document.querySelectorAll(".catalog__left").forEach(function (tabsBtn) {
+          tabsBtn.classList.remove("catalog__left-active");
         });
-        e.currentTarget.classList.add('catalog-desc__author-active');
-        document.querySelectorAll('.catalog__left').forEach(function (tabsBtn) {
-            tabsBtn.classList.remove('catalog__left-active')
-        });
-        document.querySelector(`[data-target="${path}"]`).classList.add('catalog__left-active');
+        document
+          .querySelector(`[data-target="${path}"]`)
+          .classList.add("catalog__left-active");
+        document
+          .querySelector(`[data-target="${path}"]`)
+          .setAttribute("id", "catalog__left");
+        document.getElementById("catalog__left").scrollIntoView(true);
+      });
     });
-});
-
-
 });
 
 const swiper = new Swiper(".gallery-right__swiper", {
@@ -244,5 +278,33 @@ const eventsSwiper = new Swiper(".events__content", {
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
+  },
+});
+
+var selector = document.querySelector(".contacts__input-phone");
+var im = new Inputmask("+7 (999)-999-99-99");
+im.mask(selector);
+
+new JustValidate(".contacts__form", {
+  rules: {
+    name: {
+      required: true,
+      minLength: 2,
+      maxLength: 30,
+      strength: {
+        custom: "[A-Za-zA-Яа-я]+[ A-Za-zA-Яа-я]",
+      },
+    },
+    phone: {
+      required: true,
+      function: (name, value) => {
+        const phone = selector.inputmask.unmaskedvalue();
+        return Number(phone) && phone.length === 10;
+      },
+    },
+  },
+  messages: {
+    name: "Недопустимый формат",
+    phone: "Недопустимый формат",
   },
 });

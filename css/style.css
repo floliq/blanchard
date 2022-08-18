@@ -597,6 +597,98 @@ button {
   background-size: cover;
 }
 
+.gallery-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.gallery-modal.opened {
+  opacity: 1;
+  visibility: visible;
+}
+
+.gallery-modal__content {
+  position: relative;
+  padding-left: 400px;
+  max-width: 900px;
+  min-height: 500px;
+  background: #ffffff;
+  background-image: url("../img/gallery/modal/gallery_malevich.jpg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  box-shadow: 0px 0px 80px rgba(0, 0, 0, 0.8);
+}
+
+.gallery-modal__btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  outline: none;
+}
+
+.gallery-modal__line {
+  transition: 0.3s ease;
+}
+
+.gallery-modal__btn:focus .gallery-modal__line,
+.gallery-modal__btn:hover .gallery-modal__line {
+  fill: #9d5cd0;
+}
+
+.gallery-modal__btn:active .gallery-modal__line {
+  fill: #7943a4;
+}
+
+.gallery-modal__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 121px 50px 121px 48px;
+}
+
+.gallery-modal__heading {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+  color: #333333;
+}
+
+.gallery-modal__name {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #333333;
+}
+
+.gallery-modal__ages {
+  margin-bottom: 39px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #999999;
+}
+
+.gallery-modal__text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #333333;
+}
+
 .gallery__content {
   display: flex;
 }
@@ -752,7 +844,7 @@ button {
 
 .gallery-left__time {
   position: relative;
-  padding-left: 24px;
+  display: flex;
   width: fit-content;
   outline: none;
   font-weight: 400;
@@ -762,52 +854,65 @@ button {
   cursor: pointer;
 }
 
-.gallery-left__time:focus span {
-  border-color: #c283f3;
-}
-
-.gallery-left__time:focus .gallery-left__type {
-  color: #c283f3;
-}
-
-.gallery-left__time:hover span {
-  border-color: #c283f3;
-}
-
 .gallery-left__checkbox {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
 }
 
-.gallery-left__checkbox + span {
-  position: absolute;
-  top: 50%;
-  left: 0;
+.gallery-left__type {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.gallery-left__type::before {
+  content: "";
+  margin-right: 12px;
   width: 12px;
   height: 12px;
-  transform: translateY(-50%);
-  text-align: center;
   border: 1px solid #ffffff;
   transition: border-color 0.3s ease;
 }
 
-.gallery-left__checkbox:checked + span {
-  border: 1px solid #c283f3;
+.gallery-left__checkbox:checked ~ .gallery-left__type::before {
+  border-color: #c283f3;
 }
 
-.gallery-left__checkbox + span::before {
+.gallery-left__type::after {
   content: "●";
   position: absolute;
-  top: 40%;
-  left: 50%;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  color: #c283f3;
-  line-height: 0;
+  left: 5px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  background-color: transparent;
   font-size: 10px;
+  opacity: 0;
+  transform: translateY(-50%);
   transition: opacity 0.3s ease;
 }
 
-.gallery-left__checkbox:checked + span::before {
+.gallery-left__checkbox:focus ~ .gallery-left__type {
+  color: #c283f3;
+}
+
+.gallery-left__checkbox:focus ~ .gallery-left__type::before {
+  border-color: #c283f3;
+}
+
+.gallery-left__checkbox:hover ~ .gallery-left__type::before {
+  border-color: #c283f3;
+}
+
+.gallery-left__checkbox:checked ~ .gallery-left__type::after {
   opacity: 1;
 }
 
@@ -896,7 +1001,7 @@ button {
   color: #ffffff;
 }
 
-.gallery__wrapper{
+.gallery__wrapper {
   height: 350px;
 }
 
@@ -908,8 +1013,9 @@ button {
   outline: none;
 }
 
-.gallery__wrap{
+.gallery__wrap {
   max-width: 350px;
+  cursor: pointer;
 }
 
 .gallery__wrap::before {
@@ -1531,7 +1637,12 @@ button {
 }
 
 .projects__btn-prev {
+  left: 0;
   margin-right: 45px;
+}
+
+.projects__btn-next{
+  right: 0;
 }
 
 .projects__border,
@@ -1643,21 +1754,43 @@ button {
   margin-right: 80px;
 }
 
-.contacts__input {
-  flex-grow: 1;
-  max-width: 270px;
-  max-height: 50px;
+.contacts__wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
   margin-right: 20px;
+  max-width: 270px;
+  flex-grow: 1;
+}
+
+.js-validate-error-label {
+  position: absolute;
+  top: -18px;
+  left: 24px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #d11616 !important;
+}
+
+.contacts__input {
+  width: 100%;
+  max-height: 50px;
   border: 1px solid #333333;
   border-radius: 100px;
   font-weight: 400;
   font-size: 16px;
   line-height: 32px;
-  color: #999999;
+  color: #333333;
   background-color: transparent;
   transition-duration: 0.3s;
   transition-timing-function: ease;
   outline: none;
+}
+
+.js-validate-error-field {
+  border-color: #d11616 !important;
+  color: #999999 !important;
 }
 
 .contacts__input:focus {
@@ -1852,6 +1985,7 @@ button {
     flex-direction: column;
     justify-content: center;
     cursor: pointer;
+    outline: none;
     z-index: 3;
   }
 
@@ -1867,6 +2001,7 @@ button {
   .menu__btn > span::before,
   .menu__btn > span::after {
     position: absolute;
+    left: 0;
     height: 3px;
     background-color: #fff;
     transition-duration: 0.25s;
@@ -1904,6 +2039,24 @@ button {
   .menu__btn-open > span::before,
   .menu__btn-open > span::after {
     transition-duration: 0.25s;
+  }
+
+  .menu__btn:focus > span,
+  .menu__btn:focus > span::before,
+  .menu__btn:focus > span::after {
+    background-color: #9d5cd0;
+  }
+
+  .menu__btn:hover > span,
+  .menu__btn:hover > span::before,
+  .menu__btn:hover > span::after {
+    background-color: #9d5cd0;
+  }
+
+  .menu__btn:active > span,
+  .menu__btn:active > span::before,
+  .menu__btn:active > span::after {
+    background-color: #7943a4;
   }
 
   .menu-bottom {
@@ -1994,7 +2147,7 @@ button {
   }
 
   .gallery {
-    padding: 80px 0 77px;
+    padding: 80px 0 46px;
   }
 
   .gallery-left__info {
@@ -2178,6 +2331,13 @@ button {
     max-width: 280px;
   }
 
+  .gallery-modal__content {
+    max-width: 594px;
+    min-height: 594px;
+    padding-left: 264px;
+    background-image: url("../img/gallery/modal/gallery_malevich-lg.jpg");
+  }
+
   .gallery-left {
     max-width: 280px;
   }
@@ -2227,6 +2387,17 @@ button {
     max-width: 281px;
   }
 
+  .gallery-modal__content {
+    max-width: 668px;
+    min-height: 594px;
+    padding-left: 301px;
+    background-image: url("../img/gallery/modal/gallery_malevich-md.jpg");
+  }
+
+  .gallery-modal__info {
+    padding: 122px 36px 122px 50px;
+  }
+
   .gallery-left {
     margin-right: 0;
     margin-bottom: 40px;
@@ -2255,12 +2426,11 @@ button {
     flex-wrap: wrap;
   }
 
-  .contacts__input {
-    max-width: 50%;
+  .contacts__wrap {
     margin-bottom: 12px;
   }
 
-  .contacts__input-phone {
+  .contacts__wrap:nth-child(2) {
     margin-right: 0;
   }
 
@@ -2370,6 +2540,10 @@ button {
     background-image: url("../img/background/subscribe1-md.jpg");
   }
 
+  .gallery {
+    padding: 80px 0 62px;
+  }
+
   .gallery-right__image {
     max-width: 315px;
   }
@@ -2378,7 +2552,7 @@ button {
     max-width: 317px;
   }
 
-  .contacts__input {
+  .contacts__wrap {
     max-width: 324px;
   }
 
@@ -2542,6 +2716,23 @@ button {
     padding: 50px 0;
   }
 
+  .gallery-modal__content {
+    max-width: 290px;
+    min-height: 600px;
+    padding: 0;
+    padding-top: 200px;
+    background-image: url("../img/gallery/modal/gallery_malevich-sm.jpg");
+    background-position: top center;
+  }
+
+  .gallery-modal__info {
+    padding: 17px 20px;
+  }
+
+  .gallery-modal__ages {
+    margin-bottom: 12px;
+  }
+
   .gallery-left {
     margin-bottom: 30px;
   }
@@ -2580,24 +2771,23 @@ button {
     width: fit-content;
   }
 
-  .gallery__wrapper{
+  .gallery__wrapper {
     margin-bottom: 20px;
     height: 367px;
   }
 
-  .gallery__wrap{
+  .gallery__wrap {
+    position: relative;
     max-width: 290px;
     margin: 0 auto;
   }
 
-  .gallery__wrap::after{
-    left: 50%;
-    transform: translateX(-50%);
+  .gallery__wrap::after {
     max-width: 290px;
     max-height: 367px;
   }
 
-  .gallery__wrap::before{
+  .gallery__wrap::before {
     inset: 7%;
     left: 50%;
     transform: translateX(-50%);
@@ -2655,10 +2845,6 @@ button {
     font-weight: 400;
     font-size: 16px;
     line-height: 32px;
-  }
-
-  .catalog-desc__author-break {
-    break-before: auto;
   }
 
   .catalog-desc__picture {
@@ -2799,9 +2985,13 @@ button {
     flex-direction: column;
   }
 
+  .contacts__wrap {
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
   .contacts__input {
     padding: 3px 43px 3px 24px;
-    margin-bottom: 20px;
   }
 
   .contacts__input-name {
