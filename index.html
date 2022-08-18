@@ -26,16 +26,9 @@
       <div class="menu-top">
         <div class="container">
           <div class="menu-top__content">
-            <label
-              class="menu__btn"
-              for="menu__toggle"
-              role="button"
-              aria-label="Вызов меню"
-              aria-expanded="false"
-              aria-controls="menu__bar"
-            >
+            <button class="menu__btn" aria-label="Открыть/закрыть меню">
               <span></span>
-            </label>
+            </button>
             <a href="#" class="menu-top__main">
               <picture class="menu-top__logo">
                 <source
@@ -46,7 +39,7 @@
                   srcset="img/main-logo-lg.svg"
                   media="(max-width: 1440px)"
                 />
-                <img src="img/main-logo.svg" alt="Логопит сайта" />
+                <img src="img/main-logo.svg" alt="Главная страница" />
               </picture>
             </a>
             <nav class="menu-top__bar">
@@ -76,7 +69,7 @@
               </a>
             </nav>
 
-            <button class="menu-top__search">
+            <button class="menu-top__search" aria-label="поиск">
               <svg
                 class="menu-top__mg"
                 width="30"
@@ -100,8 +93,8 @@
               </svg>
             </button>
 
-            <form class="menu-top__form" method="#">
-              <button class="menu-top__find">
+            <form class="menu-top__form">
+              <button class="menu-top__find" aria-label="Найти">
                 <svg
                   class="menu-top__mg"
                   width="30"
@@ -124,8 +117,8 @@
                   />
                 </svg>
               </button>
-              <input class="menu-top__input" type="text" />
-              <button class="menu-top__close">
+              <input class="menu-top__input" type="text" aria-label="Поле поиска" />
+              <button class="menu-top__close" aria-label="Закрыть поиск">
                 <svg
                   width="23"
                   height="23"
@@ -158,7 +151,10 @@
           <div class="menu-bottom__content">
             <ul class="menu-bottom__list">
               <li class="menu-bottom__item">
-                <button class="menu-bottom__btn">
+                <button
+                  class="menu-bottom__btn"
+                  aria-label="Выпадающий список Реализм"
+                >
                   <span class="menu-bottom__era">Реализм</span>
                   <svg
                     width="12"
@@ -211,7 +207,10 @@
                 </div>
               </li>
               <li class="menu-bottom__item">
-                <button class="menu-bottom__btn">
+                <button
+                  class="menu-bottom__btn"
+                  aria-label="Выпадающий список Импрессионизм"
+                >
                   <span class="menu-bottom__era">Импрессионизм</span>
                   <svg
                     width="12"
@@ -257,7 +256,10 @@
                 </div>
               </li>
               <li class="menu-bottom__item">
-                <button class="menu-bottom__btn">
+                <button
+                  class="menu-bottom__btn"
+                  aria-label="Выпадающий список Постимпрессионизм"
+                >
                   <span class="menu-bottom__era">Постимпрессионизм</span>
                   <svg
                     width="12"
@@ -303,7 +305,10 @@
                 </div>
               </li>
               <li class="menu-bottom__item">
-                <button class="menu-bottom__btn">
+                <button
+                  class="menu-bottom__btn"
+                  aria-label="Выпадающий список Авангард"
+                >
                   <span class="menu-bottom__era">Авангард</span>
                   <svg
                     width="12"
@@ -349,7 +354,10 @@
                 </div>
               </li>
               <li class="menu-bottom__item">
-                <button class="menu-bottom__btn">
+                <button
+                  class="menu-bottom__btn"
+                  aria-label="Выпадающий список Футуризм"
+                >
                   <span class="menu-bottom__era">Футуризм</span>
                   <svg
                     width="12"
@@ -423,8 +431,9 @@
                 </svg>
               </label>
               <input
-                type="text"
                 id="search"
+                type="search"
+                name="search"
                 class="menu-bottom__input"
                 placeholder="Поиск по сайту"
               />
@@ -469,6 +478,45 @@
         </div>
       </section>
       <section id="gallery" class="gallery">
+        <div class="gallery-modal">
+          <div class="gallery-modal__content">
+            <button class="gallery-modal__btn">
+              <svg
+                width="16"
+                height="16"
+                viewbox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  class="gallery-modal__line"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M0.666641 15.3043L15.3333 3.17761e-05L16 0.695679L1.33331 15.9999L0.666641 15.3043Z"
+                  fill="black"
+                />
+                <path
+                  class="gallery-modal__line"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M0.666725 -2.96187e-06L15.3334 15.3042L14.6667 15.9999L5.76143e-05 0.695644L0.666725 -2.96187e-06Z"
+                  fill="black"
+                />
+              </svg>
+            </button>
+            <div class="gallery-modal__info">
+              <h3 class="gallery-modal__heading">Казимир Малевич</h3>
+              <p class="gallery-modal__name">«Женщина с граблями»</p>
+              <p class="gallery-modal__ages">1931–1932</p>
+              <p class="gallery-modal__text">
+                Картина из второй серии крестьянского цикла работ Казимира
+                Малевича. Художник принялся за её создание в 1930–1931 годах,
+                после того, как первый цикл был утерян после Берлинской
+                и Варшавской выставок в 1927 году.
+              </p>
+            </div>
+          </div>
+        </div>
         <div class="container">
           <div class="gallery__content">
             <div class="gallery-left">
@@ -488,39 +536,45 @@
                     <option value="sculpture">Скульптура</option>
                   </select>
                 </div>
-                <div class="gallery-left__checkboxes">
-                  <label for="xix" class="gallery-left__time" tabindex="0">
-                    <input
-                      type="checkbox"
-                      name="xix"
-                      id="xix"
-                      class="gallery-left__checkbox"
-                    />
-                    <span></span>
-                    <p class="gallery-left__type">XIX век</p>
-                  </label>
-                  <label for="xx" class="gallery-left__time" tabindex="0">
-                    <input
-                      type="checkbox"
-                      name="xx"
-                      id="xx"
-                      class="gallery-left__checkbox"
-                      checked
-                    />
-                    <span></span>
-                    <p class="gallery-left__type">XX век</p>
-                  </label>
-                  <label for="modern" class="gallery-left__time" tabindex="0">
-                    <input
-                      type="checkbox"
-                      name="modern"
-                      id="modern"
-                      class="gallery-left__checkbox"
-                    />
-                    <span></span>
-                    <p class="gallery-left__type">Современность</p>
-                  </label>
-                </div>
+                <ul class="gallery-left__checkboxes">
+                  <li class="gallery__left__check">
+                    <label for="xix" class="gallery-left__time">
+                      <input
+                        type="checkbox"
+                        name="xix"
+                        id="xix"
+                        class="gallery-left__checkbox"
+                        value="XIX век"
+                      />
+                      <span class="gallery-left__type">XIX век</span>
+                    </label>
+                  </li>
+                  <li class="gallery__left__check">
+                    <label for="xx" class="gallery-left__time">
+                      <input
+                        type="checkbox"
+                        name="xx"
+                        id="xx"
+                        class="gallery-left__checkbox"
+                        value="XX век"
+                        checked
+                      />
+                      <span class="gallery-left__type">XX век</span>
+                    </label>
+                  </li>
+                  <li class="gallery__left__check">
+                    <label for="modern" class="gallery-left__time">
+                      <input
+                        type="checkbox"
+                        name="modern"
+                        id="modern"
+                        class="gallery-left__checkbox"
+                        value="Современность"
+                      />
+                      <span class="gallery-left__type">Современность</span>
+                    </label>
+                  </li>
+                </ul>
               </form>
             </div>
             <div class="gallery-right gallery-right__swiper">
@@ -574,7 +628,7 @@
                 </div>
               </div>
               <div class="swiper-wrapper gallery__wrapper">
-                <div class="gallery__slide swiper-slide" tabindex="0">
+                <div class="gallery__slide swiper-slide">
                   <div class="gallery__wrap">
                     <picture
                       class="gallery-right__image gallery-right__image-first"
@@ -599,7 +653,7 @@
                     </picture>
                   </div>
                 </div>
-                <div class="gallery__slide swiper-slide" tabindex="0">
+                <div class="gallery__slide swiper-slide">
                   <div class="gallery__wrap">
                     <picture
                       class="gallery-right__image gallery-right__image-second"
@@ -624,7 +678,7 @@
                     </picture>
                   </div>
                 </div>
-                <div class="gallery__slide swiper-slide" tabindex="0">
+                <div class="gallery__slide swiper-slide">
                   <div class="gallery__wrap">
                     <picture
                       class="gallery-right__image gallery-right__image-third"
@@ -649,7 +703,7 @@
                     </picture>
                   </div>
                 </div>
-                <div class="gallery__slide swiper-slide" tabindex="0">
+                <div class="gallery__slide swiper-slide">
                   <div class="gallery__wrap">
                     <picture
                       class="gallery-right__image gallery-right__image-fourth"
@@ -674,7 +728,7 @@
                     </picture>
                   </div>
                 </div>
-                <div class="gallery__slide swiper-slide" tabindex="0">
+                <div class="gallery__slide swiper-slide">
                   <div class="gallery__wrap">
                     <picture
                       class="gallery-right__image gallery-right__image-fiveth"
@@ -699,7 +753,7 @@
                     </picture>
                   </div>
                 </div>
-                <div class="gallery__slide swiper-slide" tabindex="0">
+                <div class="gallery__slide swiper-slide">
                   <div class="gallery__wrap">
                     <picture
                       class="gallery-right__image gallery-right__image-sixth"
@@ -744,7 +798,7 @@
             >
               <img
                 src="img/catalog/catalog-photo.jpg"
-                alt="Картинка человека"
+                alt="Картинка Доменико Гирландайо"
                 class="catalog__photo"
               />
               <h3 class="catalog__name">Доменико Гирландайо</h3>
@@ -776,7 +830,7 @@
             <div class="catalog__left" data-target="di_bindo">
               <img
                 src="img/catalog/di_bindo.jpg"
-                alt="Картинка человека"
+                alt="Картинка Бенедетто"
                 class="catalog__photo"
               />
               <h3 class="catalog__name">Бенедетто ди Биндо</h3>
@@ -798,7 +852,7 @@
             <div class="catalog__left" data-target="berganione">
               <img
                 src="img/catalog/berganione.jpg"
-                alt="Картинка человека"
+                alt="Картинка Амброджо"
                 class="catalog__photo"
               />
               <h3 class="catalog__name">Амброджо Бергоньоне</h3>
@@ -816,11 +870,8 @@
               </p>
             </div>
             <div class="catalog__left" data-target="francesko">
-              <img
-                src="img/catalog/francesko.jpg"
-                alt="Картинка человека"
-                class="catalog__photo"
-              />
+              <img src="img/catalog/francesko.jpg" alt="Картинка Франческо
+              Биссоло class="catalog__photo" />
               <h3 class="catalog__name">Франческо Биссоло</h3>
               <p class="catalog__lives">1470—1554</p>
               <p class="text">
@@ -1584,27 +1635,7 @@
           <h3 class="projects__subtitle">Партнёры проектов:</h3>
           <div class="projects__content">
             <div class="projects__container projects__container-swiper">
-              <div class="swiper-button-prev projects__btn projects__btn-prev">
-                <svg
-                  width="30"
-                  height="30"
-                  viewbox="0 0 30 30"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    class="projects__fill"
-                    d="M15 30C6.71573 30 8.89561e-07 23.2843 1.25168e-06 15C1.61379e-06 6.71573 6.71573 -1.01779e-06 15 -6.55671e-07C23.2843 -2.93554e-07 30 6.71573 30 15C30 23.2843 23.2843 30 15 30Z"
-                    fill="#ECECEC"
-                  />
-                  <path
-                    class="projects__border"
-                    d="M15 30C6.71573 30 8.89561e-07 23.2843 1.25168e-06 15C1.61379e-06 6.71573 6.71573 -1.01779e-06 15 -6.55671e-07C23.2843 -2.93554e-07 30 6.71573 30 15C30 23.2843 23.2843 30 15 30Z"
-                    stroke="#ECECEC"
-                  />
-                  <path d="M16 20L11 15L16 10" stroke="black" />
-                </svg>
-              </div>
+             
               <div class="projects__companies swiper-wrapper">
                 <button
                   class="projects__company projects__company-first swiper-slide"
@@ -1679,6 +1710,27 @@
                   />
                 </button>
               </div>
+              <div class="swiper-button-prev projects__btn projects__btn-prev">
+                <svg
+                  width="30"
+                  height="30"
+                  viewbox="0 0 30 30"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    class="projects__fill"
+                    d="M15 30C6.71573 30 8.89561e-07 23.2843 1.25168e-06 15C1.61379e-06 6.71573 6.71573 -1.01779e-06 15 -6.55671e-07C23.2843 -2.93554e-07 30 6.71573 30 15C30 23.2843 23.2843 30 15 30Z"
+                    fill="#ECECEC"
+                  />
+                  <path
+                    class="projects__border"
+                    d="M15 30C6.71573 30 8.89561e-07 23.2843 1.25168e-06 15C1.61379e-06 6.71573 6.71573 -1.01779e-06 15 -6.55671e-07C23.2843 -2.93554e-07 30 6.71573 30 15C30 23.2843 23.2843 30 15 30Z"
+                    stroke="#ECECEC"
+                  />
+                  <path d="M16 20L11 15L16 10" stroke="black" />
+                </svg>
+              </div>
               <div class="swiper-button-next projects__btn projects__btn-next">
                 <svg
                   width="30"
@@ -1700,11 +1752,7 @@
                   <path d="M14 20L19 15L14 10" stroke="black" />
                 </svg>
               </div>
-              <!--
-            <button class="projects__btn projects__btn-next">
-
-            </button>
-            --></div>
+            </div>
           </div>
         </div>
       </section>
@@ -1718,17 +1766,25 @@
                 <p class="contacts__street">Леонтьевский переулок, дом 5/1</p>
               </div>
               <form action="#" class="contacts__form">
-                <input
-                  type="text"
-                  class="contacts__input contacts__input-name"
-                  placeholder="Имя*"
-                />
-                <input
-                  type="text"
-                  class="contacts__input contacts__input-phone"
-                  placeholder="Телефон*"
-                />
-                <button class="contacts__btn">
+                <div class="contacts__wrap">
+                  <input
+                    type="text"
+                    class="contacts__input contacts__input-name"
+                    name="name"
+                    placeholder="Имя*"
+                    data-validate-field="name"
+                  />
+                </div>
+                <div class="contacts__wrap">
+                  <input
+                    type="tel"
+                    class="contacts__input contacts__input-phone"
+                    name="phone"
+                    placeholder="Телефон*"
+                    data-validate-field="phone"
+                  />
+                </div>
+                <button class="contacts__btn" type="submit">
                   Заказать<span class="contacts__call"> обратный звонок</span>
                 </button>
               </form>
@@ -1737,7 +1793,7 @@
                   Связаться в один клик
                 </h3>
                 <div class="contacts__social">
-                  <a href="#" class="contacts__link">
+                  <a href="#" class="contacts__link" aria-label="Связь через Whatsup">
                     <svg
                       class="contacts__pic"
                       width="40"
@@ -1757,7 +1813,7 @@
                       />
                     </svg>
                   </a>
-                  <a href="#" class="contacts__link">
+                  <a href="#" class="contacts__link" aria-label="Связь через Telegram">
                     <svg
                       class="contacts__pic"
                       width="40"
@@ -1784,7 +1840,7 @@
             </div>
           </div>
         </div>
-        <div id="map" class="map__content"></div>
+        <div id="map" class="map__content" aria-label="Карта, адрес Леонтьевский переулок, дом 5/1"></div>
       </section>
     </main>
     <footer class="socials">
@@ -1792,6 +1848,7 @@
         <div class="socials__content">
           <svg
             class="socials__logo"
+            aria-label="логотип Blanchard"
             width="173"
             height="40"
             viewbox="0 0 173 40"
@@ -1917,7 +1974,7 @@
             />
           </svg>
           <div class="socials__links">
-            <a href="#" class="socials__link">
+            <a href="#" class="socials__link" aria-label="vk.com">
               <svg
                 class="socials__social"
                 width="45"
@@ -1933,7 +1990,7 @@
                 />
               </svg>
             </a>
-            <a href="#" class="socials__link">
+            <a href="#" class="socials__link" aria-label="Одноклассники">
               <svg
                 class="socials__social"
                 width="45"
@@ -1963,6 +2020,8 @@
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/just-validate.min.js"></script>
+    <script src="js/inputmask.min.js"></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=yourapi&lang=ru_RU"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
