@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
         element.classList.contains("gallery-modal")
       ) {
         document.querySelector(".gallery-modal").classList.remove("opened");
-        document.body.classList.remove("remove");
+        document.body.classList.remove("stop");
       }
     });
 
