@@ -7,7 +7,7 @@ const choices = new Choices(element, {
 $(".accordion").accordion({
   heightStyle: "content",
   active: 0,
-  collapsible: true,
+  collapsible: false,
 });
 
 ymaps.ready(init);
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-const swiper = new Swiper(".gallery-right__swiper", {
+const swiper = new Swiper(".gallery__swiper", {
   breakpoints: {
     320: {
       slidesPerView: 1,
