@@ -188,6 +188,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+const swiperBackground = new Swiper('.subscribe__slider', {
+  autoplay: {
+      delay: 7000,
+  },
+  effect: "fade",
+  loop: true,
+  scrollbar: {
+      hide: true
+  }
+})
+
 const swiper = new Swiper(".gallery__swiper", {
   breakpoints: {
     320: {

@@ -1,4 +1,32 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap");
+@font-face {
+  font-family: "Open Sans";
+  src: local("Open Sans-Regular"),
+    url("../fonts/OpenSans-Regular.woff2") format("woff2"),
+    url("../fonts/OpenSans-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: local("Open Sans-SemiBold"),
+    url("../fonts/OpenSans-SemiBold.woff2") format("woff2"),
+    url("../fonts/OpenSans-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: local("Open Sans-Bold"),
+    url("../fonts/OpenSans-Bold.woff2") format("woff2"),
+    url("../fonts/OpenSans-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 * {
   margin: 0;
@@ -14,7 +42,6 @@ html {
 ul {
   list-style: none;
 }
-
 
 a {
   text-decoration: none;
@@ -41,6 +68,7 @@ button {
   top: 0;
   left: 0;
   right: 0;
+  z-index: 3;
   display: flex;
   flex-direction: column;
 }
@@ -87,6 +115,7 @@ button {
 
 .menu-top__main {
   margin-right: 179px;
+  outline: none;
 }
 
 .menu-top__link:focus {
@@ -508,11 +537,42 @@ button {
 }
 
 .subscribe {
-  padding: 185px 0 122px;
-  background-image: url("../img/background/subscribe.jpg");
+  position: relative;
+  overflow: hidden;
+  padding: 233px 0 122px;
+  background-color: black;
+}
+
+.subscribe__slider{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+}
+
+.subscribe__slide{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+}
+
+.subscribe__slide-first{
+  background-image: url("../img/background/subscribe.jpg");
+}
+
+.subscribe__slide-second{
+  background-image: url("../img/background/subscibe2.jpg");
+}
+
+.subscribe__slide-third{
+  background-image: url("../img/background/subscibe3.jpg");
+}
+
+.subscribe__container{
+  position: relative;
+  z-index: 2;
 }
 
 .subscribe__content {
@@ -523,6 +583,7 @@ button {
 
 .subscribe__title {
   max-width: 597px;
+  margin: 0;
   margin-bottom: 0;
   font-weight: 700;
   font-size: 72px;
@@ -553,16 +614,17 @@ button {
   outline-color: #c283f3;
 }
 
-.subscribe__btn:focus {
+.subscribe__btn:focus-visible {
   outline: 2px solid #c283f3;
   outline-offset: 5px;
 }
 
-.subscribe__btn:hover {
+.subscribe__btn:hover:not(:focus-visible) {
   box-shadow: 0 0 0 3px #d1a9f0;
 }
 
-.subscribe__btn:active {
+.subscribe__btn:active,
+.subscribe__btn:active:not(:focus-visible) {
   background: #7943a4;
   outline: none;
 }
@@ -953,10 +1015,12 @@ button {
   display: flex;
   align-items: center;
   padding: 24px 3px 0;
-  margin-bottom: 27px;
+  margin-bottom: 30px;
 }
 
 .gallery-right__button {
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   outline: none;
 }
@@ -1325,7 +1389,9 @@ button {
   font-size: 16px;
   line-height: 22px;
   color: #9d5cd0;
+  outline: none;
 }
+
 
 .events__container {
   position: relative;
@@ -1642,7 +1708,7 @@ button {
   margin-right: 45px;
 }
 
-.projects__btn-next{
+.projects__btn-next {
   right: 0;
 }
 
@@ -1751,6 +1817,7 @@ button {
 
 .contacts__form {
   display: flex;
+  align-items: center;
   flex-grow: 1;
   margin-right: 80px;
 }
@@ -1820,8 +1887,7 @@ button {
 .contacts__btn {
   flex-grow: 1;
   max-width: 329px;
-  max-height: 50px;
-  padding: 11px 25px;
+  padding: 11px 19px;
   background-color: transparent;
   border: 2px solid #9d5cd0;
   border-radius: 100px;
@@ -1832,19 +1898,22 @@ button {
   color: #9d5cd0;
   transition-duration: 0.3s;
   transition-timing-function: ease;
+  
 }
 
-.contacts__btn:focus {
+.contacts__btn:focus-visible {
   outline-offset: 5px;
   outline: 2px solid #c283f3;
 }
 
-.contacts__btn:hover {
+.contacts__btn:hover:not(:focus-visible) {
+  outline: none;
   background-color: #9d5cd0;
   color: white;
 }
 
-.contacts__btn:active {
+.contacts__btn:active,
+.contacts__btn:active:not(:focus-visible) {
   background-color: #9d5cd0;
   color: white;
   box-shadow: 0 0 0 3px #d1a9f0;
@@ -1926,6 +1995,10 @@ button {
   align-items: center;
 }
 
+.socials__item {
+  display: flex;
+}
+
 .socials__link {
   height: 45px;
   outline: none;
@@ -1948,7 +2021,7 @@ button {
   fill: #9d5cd0;
 }
 
-.socials__link:not(:last-child) {
+.socials__item:not(:last-child) {
   margin-right: 20px;
 }
 
@@ -2109,6 +2182,7 @@ button {
   }
 
   .menu-top__main {
+    outline: none;
     margin: 0;
   }
 
@@ -2135,7 +2209,7 @@ button {
   }
 
   .subscribe {
-    padding: 156px 0 113px;
+    padding: 205px 0 113px;
   }
 
   .subscribe__title {
@@ -2148,7 +2222,7 @@ button {
   }
 
   .gallery {
-    padding: 80px 0 46px;
+    padding: 80px 0 43px;
   }
 
   .gallery-left__info {
@@ -2324,8 +2398,17 @@ button {
 }
 
 @media (max-width: 1024px) {
-  .subscribe {
+
+  .subscribe__slide-first{
     background-image: url("../img/background/subscribe-lg.jpg");
+  }
+  
+  .subscribe__slide-second{
+    background-image: url("../img/background/subscribe2-lg.jpg");
+  }
+  
+  .subscribe__slide-third{
+    background-image: url("../img/background/subscribe3-lg.jpg");
   }
 
   .choices {
@@ -2467,7 +2550,7 @@ button {
   }
 
   .catalog__photo {
-    margin-bottom: 17px;
+    margin-bottom: 20px;
   }
 
   .catalog__name {
@@ -2537,12 +2620,20 @@ button {
 }
 
 @media (max-width: 768px) {
-  .subscribe {
+  .subscribe__slide-first{
     background-image: url("../img/background/subscribe1-md.jpg");
+  }
+  
+  .subscribe__slide-second{
+    background-image: url("../img/background/subscribe2-md.jpg");
+  }
+  
+  .subscribe__slide-third{
+    background-image: url("../img/background/subscribe3-md.jpg");
   }
 
   .gallery {
-    padding: 80px 0 62px;
+    padding: 80px 0 57px;
   }
 
   .gallery-right__image {
@@ -2551,6 +2642,10 @@ button {
 
   .events__card {
     max-width: 317px;
+  }
+
+  .events__date{
+    margin-bottom: 0;
   }
 
   .contacts__wrap {
@@ -2662,7 +2757,7 @@ button {
   }
 
   .subscribe {
-    padding: 53px 0 45px;
+    padding: 75px 0 45px;
   }
 
   .subscribe__content {
@@ -2714,7 +2809,7 @@ button {
   }
 
   .gallery {
-    padding: 50px 0;
+    padding: 50px 0 47px;
   }
 
   .gallery-modal__content {
@@ -2736,15 +2831,13 @@ button {
 
   .gallery-left {
     margin-bottom: 30px;
+    max-width: 100%;
   }
 
   .gallery-left__filter {
     margin-bottom: 5px;
   }
 
-  .gallery-left {
-    max-width: 100%;
-  }
 
   .choices {
     max-width: 100%;
@@ -2914,7 +3007,7 @@ button {
   }
 
   .projects {
-    padding: 33px 0 50px;
+    padding: 30px 0 50px;
   }
 
   .projects__text {
@@ -3012,6 +3105,7 @@ button {
   }
 
   .contacts__form {
+    align-items:initial;
     margin-bottom: 22px;
   }
 
