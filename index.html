@@ -7,18 +7,10 @@
     <title>blanchard-art</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/normalize.css" />
-    <link
-      rel="stylesheet"
-      href="libs/choices.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="libs/simplebar.css"
-    />
-    <link
-      rel="stylesheet"
-      href="libs/swiper-bundle.min.css"
-    />
+    <link rel="stylesheet" href="libs/accordion.min.css" />
+    <link rel="stylesheet" href="libs/choices.min.css" />
+    <link rel="stylesheet" href="libs/simplebar.css" />
+    <link rel="stylesheet" href="libs/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -449,11 +441,17 @@
     <main>
       <section class="subscribe">
         <div class="subscribe__slider">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide subscribe__slide subscribe__slide-first"></div>
-              <div class="swiper-slide subscribe__slide subscribe__slide-second"></div>
-              <div class="swiper-slide subscribe__slide subscribe__slide-third"></div>
-            </div>
+          <div class="swiper-wrapper">
+            <div
+              class="swiper-slide subscribe__slide subscribe__slide-first"
+            ></div>
+            <div
+              class="swiper-slide subscribe__slide subscribe__slide-second"
+            ></div>
+            <div
+              class="swiper-slide subscribe__slide subscribe__slide-third"
+            ></div>
+          </div>
         </div>
         <div class="container subscribe__container">
           <div class="subscribe__content">
@@ -639,7 +637,7 @@
                 </div>
               </div>
               <div class="swiper-wrapper gallery__wrapper">
-                <div class="gallery__slide swiper-slide">
+                <div class="gallery__slide swiper-slide" tabindex="0">
                   <div class="gallery__wrap">
                     <picture
                       class="gallery-right__image gallery-right__image-first"
@@ -664,7 +662,7 @@
                     </picture>
                   </div>
                 </div>
-                <div class="gallery__slide swiper-slide">
+                <div class="gallery__slide swiper-slide" tabindex="0">
                   <div class="gallery__wrap">
                     <picture
                       class="gallery-right__image gallery-right__image-second"
@@ -689,7 +687,7 @@
                     </picture>
                   </div>
                 </div>
-                <div class="gallery__slide swiper-slide">
+                <div class="gallery__slide swiper-slide" tabindex="0">
                   <div class="gallery__wrap">
                     <picture
                       class="gallery-right__image gallery-right__image-third"
@@ -714,7 +712,7 @@
                     </picture>
                   </div>
                 </div>
-                <div class="gallery__slide swiper-slide">
+                <div class="gallery__slide swiper-slide" tabindex="0">
                   <div class="gallery__wrap">
                     <picture
                       class="gallery-right__image gallery-right__image-fourth"
@@ -739,7 +737,7 @@
                     </picture>
                   </div>
                 </div>
-                <div class="gallery__slide swiper-slide">
+                <div class="gallery__slide swiper-slide" tabindex="0">
                   <div class="gallery__wrap">
                     <picture
                       class="gallery-right__image gallery-right__image-fiveth"
@@ -764,7 +762,7 @@
                     </picture>
                   </div>
                 </div>
-                <div class="gallery__slide swiper-slide">
+                <div class="gallery__slide swiper-slide" tabindex="0">
                   <div class="gallery__wrap">
                     <picture
                       class="gallery-right__image gallery-right__image-sixth"
@@ -906,9 +904,9 @@
               </p>
             </div>
             <div class="catalog__right">
-              <ul class="accordion">
-                <li class="catalog__era catalog__era-active">
-                  <div class="catalog__info">
+              <ul class="catalog__accordion accordion-container">
+                <li class="catalog__era catalog__era-active ac">
+                  <div class="catalog__info ac-header ac-trigger" tabindex="0">
                     <h3 class="catalog__title">C 1400 по 1499 гг.</h3>
                     <svg
                       width="50"
@@ -934,8 +932,7 @@
                       />
                     </svg>
                   </div>
-
-                  <div class="catalog-desc">
+                  <div class="catalog-desc ac-panel">
                     <ul class="catalog-desc__list">
                       <li class="catalog-desc__item">
                         <button
@@ -1132,8 +1129,8 @@
                     </ul>
                   </div>
                 </li>
-                <li class="catalog__era">
-                  <div class="catalog__info">
+                <li class="catalog__era ac">
+                  <div class="catalog__info ac-header ac-trigger" tabindex="0">
                     <h3 class="catalog__title">C 1500 по 1599 гг.</h3>
                     <svg
                       width="50"
@@ -1159,8 +1156,7 @@
                       />
                     </svg>
                   </div>
-
-                  <div class="catalog-desc empty-block">
+                  <div class="catalog-desc empty-block ac-panel">
                     <div class="catalog-desc__content">
                       <div class="catalog-desc__picture">
                         <div class="catalog-desc__inside"></div>
@@ -1176,9 +1172,9 @@
                     </div>
                   </div>
                 </li>
-                <li class="catalog__era">
-                  <div class="catalog__info">
-                    <h3 class="catalog__title">C 1600 по 1699 гг.</h3>
+                <li class="catalog__era ac">
+                  <div class="catalog__info ac-header ac-trigger" tabindex="0">
+                    <h3 class="catalog__title">C 1600 по 1699 гг</h3>
                     <svg
                       width="50"
                       height="50"
@@ -1203,8 +1199,7 @@
                       />
                     </svg>
                   </div>
-
-                  <div class="catalog-desc empty-block">
+                  <div class="catalog-desc empty-block ac-panel">
                     <div class="catalog-desc__content">
                       <div class="catalog-desc__picture">
                         <div class="catalog-desc__inside"></div>
@@ -1220,9 +1215,9 @@
                     </div>
                   </div>
                 </li>
-                <li class="catalog__era">
-                  <div class="catalog__info">
-                    <h3 class="catalog__title">C 1700 по 1799 гг.</h3>
+                <li class="catalog__era ac">
+                  <div class="catalog__info ac-header ac-trigger" tabindex="0">
+                    <h3 class="catalog__title">C 1700 по 1799 гг</h3>
                     <svg
                       width="50"
                       height="50"
@@ -1247,8 +1242,7 @@
                       />
                     </svg>
                   </div>
-
-                  <div class="catalog-desc empty-block">
+                  <div class="catalog-desc empty-block ac-panel">
                     <div class="catalog-desc__content">
                       <div class="catalog-desc__picture">
                         <div class="catalog-desc__inside"></div>
@@ -1264,9 +1258,9 @@
                     </div>
                   </div>
                 </li>
-                <li class="catalog__era">
-                  <div class="catalog__info">
-                    <h3 class="catalog__title">C 1800 по 1899 гг.</h3>
+                <li class="catalog__era ac">
+                  <div class="catalog__info ac-header ac-trigger" tabindex="0">
+                    <h3 class="catalog__title">C 1800 по 1899 гг</h3>
                     <svg
                       width="50"
                       height="50"
@@ -1291,8 +1285,7 @@
                       />
                     </svg>
                   </div>
-
-                  <div class="catalog-desc empty-block">
+                  <div class="catalog-desc empty-block ac-panel">
                     <div class="catalog-desc__content">
                       <div class="catalog-desc__picture">
                         <div class="catalog-desc__inside"></div>
@@ -1308,9 +1301,9 @@
                     </div>
                   </div>
                 </li>
-                <li class="catalog__era">
-                  <div class="catalog__info">
-                    <h3 class="catalog__title">C 1900 по 1999 гг.</h3>
+                <li class="catalog__era ac">
+                  <div class="catalog__info ac-header ac-trigger" tabindex="0">
+                    <h3 class="catalog__title">C 1900 по 1999 гг</h3>
                     <svg
                       width="50"
                       height="50"
@@ -1335,8 +1328,7 @@
                       />
                     </svg>
                   </div>
-
-                  <div class="catalog-desc empty-block">
+                  <div class="catalog-desc empty-block ac-panel">
                     <div class="catalog-desc__content">
                       <div class="catalog-desc__picture">
                         <div class="catalog-desc__inside"></div>
@@ -1352,9 +1344,9 @@
                     </div>
                   </div>
                 </li>
-                <li class="catalog__era">
-                  <div class="catalog__info">
-                    <h3 class="catalog__title">C 2000 г.</h3>
+                <li class="catalog__era ac">
+                  <div class="catalog__info ac-header ac-trigger" tabindex="0">
+                    <h3 class="catalog__title">C 2000 г</h3>
                     <svg
                       width="50"
                       height="50"
@@ -1379,8 +1371,7 @@
                       />
                     </svg>
                   </div>
-
-                  <div class="catalog-desc empty-block">
+                  <div class="catalog-desc empty-block ac-panel">
                     <div class="catalog-desc__content">
                       <div class="catalog-desc__picture">
                         <div class="catalog-desc__inside"></div>
@@ -1562,7 +1553,13 @@
             смешаны с не уникальными данными до степени совершенной
             неузнаваемости, из-за чего возрастает их статус бесполезности.
             Прежде всего, постоянное информационно-пропагандистское
-            <span class="projects-tooltip" tabindex="0">
+            <span
+              id="tooltip-one"
+              class="projects-tooltip"
+              tabindex="0"
+              role="button"
+              aria-label="Пример современных тенденций — современная методология разработки"
+            >
               <svg
                 class="projects-tooltip__btn"
                 width="16"
@@ -1582,15 +1579,12 @@
                   class="projects-tooltip__btn-letter"
                 />
               </svg>
-              <span class="projects-tooltip__text">
-                Пример современных тенденций — современная методология
-                разработки
-              </span>
             </span>
             обеспечение нашей деятельности однозначно фиксирует необходимость
             экономической целесообразности принимаемых решений. И нет сомнений,
             что действия представителей оппозиции могут быть рассмотрены
-            <span class="projects-tooltip" tabindex="0">
+            <span id="tooltip-two" class="projects-tooltip" tabindex="0" role="button"
+            aria-label="Приятно, граждане, наблюдать, как сделанные на базе аналитики выводы вызывают у вас эмоции">
               <svg
                 class="projects-tooltip__btn"
                 width="16"
@@ -1610,13 +1604,10 @@
                   class="projects-tooltip__btn-letter"
                 />
               </svg>
-              <span class="projects-tooltip__text">
-                Приятно, граждане, наблюдать, как сделанные на базе аналитики
-                выводы вызывают у вас эмоции
-              </span>
             </span>
             исключительно в разрезе маркетинговых и финансовых
-            <span class="projects-tooltip" tabindex="0">
+            <span id="tooltip-three" class="projects-tooltip" tabindex="0" role="button"
+            aria-label="В стремлении повысить качество">
               <svg
                 class="projects-tooltip__btn"
                 width="16"
@@ -1636,9 +1627,6 @@
                   class="projects-tooltip__btn-letter"
                 />
               </svg>
-              <span class="projects-tooltip__text">
-                В стремлении повысить качество
-              </span>
             </span>
             предпосылок. Банальные, но неопровержимые выводы, а также
             представители современных социальных резервов призывают нас к новым
@@ -1787,7 +1775,7 @@
                 <h3 class="contacts__heading">Шоурум №4</h3>
                 <p class="contacts__street">Леонтьевский переулок, дом 5/1</p>
               </div>
-              <form action="#" class="contacts__form">
+              <form action="#" method="post" class="contacts__form">
                 <div class="contacts__wrap">
                   <input
                     type="text"
@@ -1818,7 +1806,7 @@
                   <a
                     href="#"
                     class="contacts__link"
-                    aria-label="Связь через Whatsup"
+                    aria-label="Напишите нам в Whatsup"
                   >
                     <svg
                       class="contacts__pic"
@@ -1842,7 +1830,7 @@
                   <a
                     href="#"
                     class="contacts__link"
-                    aria-label="Связь через Telegram"
+                    aria-label="напишите нам в Telegram"
                   >
                     <svg
                       class="contacts__pic"
@@ -2007,7 +1995,11 @@
           </a>
           <ul class="socials__links">
             <li class="socials__item">
-              <a href="#" class="socials__link" aria-label="vk.com">
+              <a
+                href="#"
+                class="socials__link"
+                aria-label="Наша группа в ВКонтакте"
+              >
                 <svg
                   class="socials__social"
                   width="45"
@@ -2025,7 +2017,11 @@
               </a>
             </li>
             <li class="socials__item">
-              <a href="#" class="socials__link" aria-label="Одноклассники">
+              <a
+                href="#"
+                class="socials__link"
+                aria-label="Наша группа в одноклассниках"
+              >
                 <svg
                   class="socials__social"
                   width="45"
@@ -2056,11 +2052,14 @@
     <script src="libs/choices.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="libs/accordion.min.js"></script>
     <script src="libs/inputmask.min.js"></script>
     <script src="libs/just-validate.min.js"></script>
     <script src="libs/yandex.js"></script>
     <script src="libs/swiper-bundle.min.js"></script>
     <script src="libs/simplebar.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

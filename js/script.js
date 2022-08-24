@@ -7,20 +7,16 @@ const choices = new Choices(element, {
 $(".accordion").accordion({
   heightStyle: "content",
   active: 0,
-  collapsible: false,
+  collapsible: true,
 });
+
+let accordion = new Accordion('.accordion-container');
+accordion.open(0);
 
 ymaps.ready(init);
 function init() {
-  // Создание карты.
   var myMap = new ymaps.Map("map", {
-    // Координаты центра карты.
-    // Порядок по умолчанию: «широта, долгота».
-    // Чтобы не определять координаты центра карты вручную,
-    // воспользуйтесь инструментом Определение координат.
     center: [55.75846806898367, 37.60108849999989],
-    // Уровень масштабирования. Допустимые значения:
-    // от 0 (весь мир) до 19.
     zoom: 14,
     controls: [],
   });
@@ -51,9 +47,6 @@ function init() {
     },
   });
 }
-
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
   event.preventDefault();
@@ -124,8 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".simplebar-content-wrapper").forEach((el) => {
     el.removeAttribute("tabindex");
-    el.removeAttribute("aria-label")
-  })
+    el.removeAttribute("aria-label");
+  });
 
   document.querySelectorAll(".gallery__wrap").forEach(function (wrap) {
     wrap.addEventListener("click", () => {
@@ -146,22 +139,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.remove("stop");
       }
     });
-
-  document.querySelectorAll(".catalog__era").forEach(function (catalogBtn) {
-    catalogBtn.addEventListener("click", () => {
-      let element = catalogBtn.children[0];
-      if (element.classList.contains("ui-state-active")) {
-        catalogBtn.classList.add("catalog__era-active");
-      } else {
-        catalogBtn.classList.remove("catalog__era-active");
-      }
-      document.querySelectorAll(".catalog__era").forEach(function (btn) {
-        if (catalogBtn != btn) {
-          btn.classList.remove("catalog__era-active");
-        }
-      });
-    });
-  });
 
   document
     .querySelectorAll(".catalog-desc__author")
@@ -188,16 +165,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-const swiperBackground = new Swiper('.subscribe__slider', {
+const swiperBackground = new Swiper(".subscribe__slider", {
   autoplay: {
-      delay: 7000,
+    delay: 7000,
   },
   effect: "fade",
   loop: true,
   scrollbar: {
-      hide: true
-  }
-})
+    hide: true,
+  },
+});
 
 const swiper = new Swiper(".gallery__swiper", {
   breakpoints: {
@@ -226,6 +203,10 @@ const swiper = new Swiper(".gallery__swiper", {
     el: ".gallery-right__page",
     type: "fraction",
   },
+  a11y:{
+    prevSlideMessage: 'Предыдущий слайд',
+    nextSlideMessage: 'Следующий слайд',
+  }
 });
 
 const projectsSwiper = new Swiper(".projects__container-swiper", {
@@ -255,6 +236,10 @@ const projectsSwiper = new Swiper(".projects__container-swiper", {
   navigation: {
     nextEl: ".projects__btn-next",
     prevEl: ".projects__btn-prev",
+  },
+  a11y:{
+    prevSlideMessage: 'Предыдущий слайд',
+    nextSlideMessage: 'Следующий слайд',
   },
 });
 
@@ -290,6 +275,10 @@ const eventsSwiper = new Swiper(".events__content", {
     el: ".swiper-pagination",
     clickable: true,
   },
+  a11y:{
+    prevSlideMessage: 'Предыдущий слайд',
+    nextSlideMessage: 'Следующий слайд',
+  },
 });
 
 var selector = document.querySelector(".contacts__input-phone");
@@ -318,4 +307,47 @@ new JustValidate(".contacts__form", {
     name: "Недопустимый формат",
     phone: "Недопустимый формат",
   },
+  submitHandler: function (thisForm) {
+    let formData = new FormData(thisForm);
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          console.log("Отправлено");
+        }
+      }
+    };
+
+    xhr.open("POST", "mail.php", true);
+    xhr.send(formData);
+
+    thisForm.reset();
+  },
+});
+
+tippy("#tooltip-one", {
+  content: "Пример современных тенденций — современная методология разработки",
+  maxWidth: 264,
+  theme: 'projects',
+  trigger: 'click',
+  trigger: 'focus',
+  placement: 'top',
+});
+
+tippy("#tooltip-two", {
+  content: "Приятно, граждане, наблюдать, как сделанные на базе аналитики выводы вызывают у вас эмоции",
+  maxWidth: 264,
+  theme: 'projects',
+  trigger: 'click',
+  trigger: 'focus',
+  placement: 'top',
+});
+
+tippy("#tooltip-three", {
+  content: "В стремлении повысить качество",
+  maxWidth: 264,
+  theme: 'projects',
+  trigger: 'click',
+  trigger: 'focus',
+  placement: 'top',
 });
